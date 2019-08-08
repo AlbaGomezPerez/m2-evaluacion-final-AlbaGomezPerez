@@ -4,11 +4,12 @@ body {
   margin: 0;
   height: 100vh;
 }
-.page{
+.page::after{
   height: 100vh;
   background-color: aqua;
 }
-.title{}
+.title{
+}
 
 .fill{}
 
@@ -19,19 +20,38 @@ body {
   height: 100%;
 }
 
+.serie-space{
+  background-color: orange;
+  width: 360px;
+}
+
 // estilos de elementos creados en JavaScript
 .serie{
   background-color: pink;
   width: 300px;
   margin-top: 20px;
+  list-style: none;
 }
 
 .space-title{
+  color: white;
   background-color: palegreen;
   width: 300px;
 }
 
+.space-title {
+  background-color: palegreen;
+  width: 300px;
+}
+.favourite{
+  background-color: rgb(190, 27, 62);
+}
+
 .space-image{
+
+}
+
+.heart{
 
 }
 
