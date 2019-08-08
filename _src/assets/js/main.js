@@ -17,16 +17,26 @@ function serching(){
     series.innerHTML='';
 
     for (let i = 0; i < data.length; i++){
+
+      let serieInfo = {
+        id: data[i].show.id,
+        name: data[i].show.name,
+      };
+      if(data[i].show.image === null){
+        serieInfo.imageMedium = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+      }else{
+        serieInfo.imageMedium = data[i].show.image.medium;
+      }
+
+// codifica el objeto "serieInfo" para guardarlo
+      const serieInfoStr = encodeURIComponent(JSON.stringify(serieInfo));
+
       let serie = '<div class="serie-space">';
       serie += '<ul class="serie" >';
-      serie += '<li class="space-title ' + isFavouriteSerie(data[i].show.id) + '" id="' + data[i].show.id + '">' + data[i].show.name + '</li>';
+      serie += '<li class="space-title ' + isFavouriteSerie(serieInfoStr) + '" id="' + serieInfoStr + '">' + serieInfo.name + '</li>';
       // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
-      if(data[i].show.image === null){
-        serie += '<li class="space-image"><img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"/></li>';
-      }else{
-        serie += '<li class="space-image"><img src="' + data[i].show.image.medium + '"/></li>';
-      }
-      serie += '<li class="reference">' + data[i].show.id + '</li>';
+        serie += '<li class="space-image"><img src="' + serieInfo.imageMedium + '"/></li>';
+      serie += '<li class="reference">' + serieInfo.id + '</li>';
       serie += '</ul>';
       serie += '</div>';
       series.innerHTML += serie;
@@ -36,7 +46,8 @@ function serching(){
       myFav.addEventListener('click', favSav);
     }
   })
-  .catch(function() {
+  .catch(function(error) {
+    console.log(error);
     series.innerHTML = 'Vuelve a intentarlo más tarde, se ha producido un error';
   });
 }
@@ -55,26 +66,28 @@ function favSav(event){
   event.target.classList.add('like');
   event.target.classList.remove('noLike');
 
-  let favouriteIdList = localStorage.getItem('favouriteIdList');
-  if (favouriteIdList === null || favouriteIdList === undefined){
-    favouriteIdList = [event.target.id];
+console.log(decodeURIComponent(event.target.id));
+
+  let favouriteSerieList = localStorage.getItem('favouriteSerieListStored');
+  if (favouriteSerieList === null || favouriteSerieList === undefined){
+    favouriteSerieList = [event.target.id];
   }else{
-    favouriteIdList = JSON.parse(favouriteIdList);
-    favouriteIdList.push(event.target.id);
+    favouriteSerieList = JSON.parse(favouriteSerieList);
+    favouriteSerieList.push(event.target.id);
   }
 
-  localStorage.setItem( 'favouriteIdList', JSON.stringify(favouriteIdList));
+  localStorage.setItem( 'favouriteSerieListStored', JSON.stringify(favouriteSerieList));
 }
 
 // Función id. Los id guardados en el localStorage
 // los recoge de nuevo para volver a pintarlos y les pone la clase correspondiente.
-function isFavouriteSerie(serieId){
-  let favouriteId = localStorage.getItem('favouriteIdList');
+function isFavouriteSerie(serieInfo){
+  let favouriteId = localStorage.getItem('favouriteSerieListStored');
   if (favouriteId === null || favouriteId === undefined){
     return 'noLike';
   }else{
     favouriteId = JSON.parse(favouriteId);
-    if(favouriteId.includes(serieId + '')) {
+    if(favouriteId.includes(serieInfo)) {
       return 'like';
     }else{
       return 'noLike';
