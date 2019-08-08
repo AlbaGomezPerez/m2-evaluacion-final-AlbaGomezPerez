@@ -12,7 +12,6 @@ function serching(){
   fetch(url + inputValue.value)
   .then (response => response.json())
   .then (data => {
-
 // Bucle para recorrer la info devuelta (data) y
 // pintar en el espacio de "series" las imágenes y títulos
     series.innerHTML='';
@@ -27,10 +26,12 @@ function serching(){
     }else{
     serie += '<li class="space-image"><img src="' + data[i].show.image.medium + '"/></li>';
     }
+    serie += '<li class="reference">' + data[i].show.id + '</li>';
     serie += '</ul>';
     serie += '</div>';
     series.innerHTML += serie;
   }
+
   for(let myFav of document.querySelectorAll('.noLike')){
     myFav.addEventListener('click', favSav);
   }
@@ -45,6 +46,8 @@ inputValue.addEventListener('keyup', event => {
   }
   });
 
+// evento, cuando clickas, cambias de una clase a otra (favoritos). Esta clase es llamada
+// dentro de la función serching
 function favSav(event){
   event.target.classList.add('like');
   event.target.classList.remove('noLike');
