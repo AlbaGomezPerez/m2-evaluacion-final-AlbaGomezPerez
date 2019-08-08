@@ -66,6 +66,8 @@ function favSav(event){
   localStorage.setItem( 'favouriteIdList', JSON.stringify(favouriteIdList));
 }
 
+// Función id. Los id guardados en el localStorage
+// los recoge de nuevo para volver a pintarlos y les pone la clase correspondiente.
 function isFavouriteSerie(serieId){
   let favouriteId = localStorage.getItem('favouriteIdList');
   if (favouriteId === null || favouriteId === undefined){
@@ -79,6 +81,8 @@ function isFavouriteSerie(serieId){
     }
   }
 }
+
+
 // función que da una respuesta errónea del servidor. A esta función la
 // llamamos en "serching"
 function handleErrors(response) {
