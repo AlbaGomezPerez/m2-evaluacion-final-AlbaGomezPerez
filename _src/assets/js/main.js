@@ -96,10 +96,12 @@ function handleErrors(response) {
 
 function showFavourites(){
   const favouriteSerieList = JSON.parse(localStorage.getItem( 'favouriteSerieListStored'));
-  for (let favouriteSerie of favouriteSerieList){
-    const favouriteSerieInfo = JSON.parse(decodeURIComponent(favouriteSerie));
-    console.log(favouriteSerieInfo);
-    favouriteSpace.innerHTML += generateSerieContent(favouriteSerieInfo);
+  if(favouriteSerieList != undefined && favouriteSerieList != null){
+    for (let favouriteSerie of favouriteSerieList){
+      const favouriteSerieInfo = JSON.parse(decodeURIComponent(favouriteSerie));
+      console.log(favouriteSerieInfo);
+      favouriteSpace.innerHTML += generateSerieContent(favouriteSerieInfo);
+    }
   }
 }
 showFavourites();

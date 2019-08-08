@@ -8,7 +8,8 @@ body {
   height: 100vh;
 }
 .title:after{
-  content:"\f1e0";
+  content: "\f030";
+  font-family: "Font Awesome 5 Brands";
   position: absolute;
   font-weight: 900;
 }
@@ -40,7 +41,6 @@ body {
 .favourite-Space{
   background-color: palevioletred;
   height: 50%;
-  display: none;
 }
 
 // estilos de elementos creados en JavaScript
