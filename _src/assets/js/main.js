@@ -19,7 +19,7 @@ function serching(){
     for (let i = 0; i < data.length; i++){
       let serie = '<div class="serie-space">';
       serie += '<ul class="serie" >';
-      serie += '<li class="space-title noLike">' +data[i].show.name+ '</li>';
+      serie += '<li class="space-title ' + isFavouriteSerie(data[i].show.id) + '" id="' + data[i].show.id + '">' + data[i].show.name + '</li>';
       // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
       if(data[i].show.image === null){
         serie += '<li class="space-image"><img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"/></li>';
@@ -55,15 +55,15 @@ function favSav(event){
   event.target.classList.add('like');
   event.target.classList.remove('noLike');
 
-  let favouriteId = localStorage.getItem('favouriteIdList');
-  if (favouriteId === null || favouriteId === undefined){
-    favouriteId = [event.target.id];
+  let favouriteIdList = localStorage.getItem('favouriteIdList');
+  if (favouriteIdList === null || favouriteIdList === undefined){
+    favouriteIdList = [event.target.id];
   }else{
-    favouriteId = JSON.parse(favouriteId);
-    favouriteId.push(event.target.id);
+    favouriteIdList = JSON.parse(favouriteIdList);
+    favouriteIdList.push(event.target.id);
   }
 
-  localStorage.setItem( 'favouriteIdList', JSON.stringify(favouriteId));
+  localStorage.setItem( 'favouriteIdList', JSON.stringify(favouriteIdList));
 }
 
 function isFavouriteSerie(serieId){
