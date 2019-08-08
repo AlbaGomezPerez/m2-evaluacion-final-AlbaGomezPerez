@@ -4,6 +4,7 @@ const inputValue = document.querySelector('.value');
 const button = document.querySelector('.button');
 const series = document.querySelector('.space-series');
 const favouriteSpace = document.querySelector('.favourite-Space');
+const reset = document.querySelector('.remove');
 const url = 'http://api.tvmaze.com/search/shows?q=';
 
 //función hace petición a la api con el valor introducido
@@ -66,6 +67,7 @@ function favSav(event){
   }
 
   localStorage.setItem( 'favouriteSerieListStored', JSON.stringify(favouriteSerieList));
+  showFavourites();
 }
 
 // Función id. Los id guardados en el localStorage
@@ -95,6 +97,7 @@ function handleErrors(response) {
 }
 
 function showFavourites(){
+  favouriteSpace.innerHTML = '';
   const favouriteSerieList = JSON.parse(localStorage.getItem( 'favouriteSerieListStored'));
   if(favouriteSerieList != undefined && favouriteSerieList != null){
     for (let favouriteSerie of favouriteSerieList){
@@ -119,4 +122,9 @@ function generateSerieContent(serieInfo){
 
   return serie;
 }
+function removing(){
+  localStorage.clear();
+  showFavourites();
+}
+reset.addEventListener('click', removing);
 
