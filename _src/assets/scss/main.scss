@@ -4,11 +4,14 @@ body {
   margin: 0;
   height: 100vh;
 }
-.page::after{
+.page{
   height: 100vh;
   background-color: aqua;
 }
-.title{
+.title:after{
+  content:"\f1e0";
+  position: absolute;
+  font-weight: 900;
 }
 
 .fill{}
@@ -18,11 +21,22 @@ body {
 .space-series{
   background-color: papayawhip;
   height: 100%;
-}
+  width:100%;
+  display: inline-block;
+  margin: auto;
+  margin-top: 40px;
+  }
+
 
 .serie-space{
   background-color: orange;
   width: 360px;
+  margin: 20px;
+	float: left;
+}
+
+.favourite-Space{
+  background-color: palevioletred;
 }
 
 // estilos de elementos creados en JavaScript

@@ -1,5 +1,4 @@
 'use strict';
-
 const inputSerie = document.querySelector('.fill');
 const inputValue = document.querySelector('.value');
 const button = document.querySelector('.button');
@@ -14,7 +13,7 @@ function serching(){
   .then (data => {
 // Bucle para recorrer la info devuelta (data) y
 // pintar en el espacio de "series" las imágenes y títulos
-    series.innerHTML='';
+series.innerHTML='';
 
     for (let i = 0; i < data.length; i++){
     let serie = '<div class="serie-space">';
@@ -51,4 +50,31 @@ inputValue.addEventListener('keyup', event => {
 function favSav(event){
   event.target.classList.add('like');
   event.target.classList.remove('noLike');
+
+  let favouriteId = localStorage.getItem('favouriteIdList');
+ 	if (favouriteId === null || favouriteId === undefined){
+ 		favouriteId = [event.target.id];
+ 	}else{
+ 		favouriteId = JSON.parse(favouriteId);
+ 		favouriteId.push(event.target.id);
+ 	}
+
+	localStorage.setItem( 'favouriteIdList', JSON.stringify(favouriteId));
 }
+
+function isFavouriteSerie(serieId){
+	let favouriteId = localStorage.getItem('favouriteIdList');
+	if (favouriteId === null || favouriteId === undefined){
+		return 'noLike';
+	}else{
+ 		favouriteId = JSON.parse(favouriteId);
+ 		if(favouriteId.includes(serieId + '')) {
+			return 'like';
+		}else{
+			return 'noLike';
+		}
+	}
+}
+
+const favouriteSpace = document.querySelector('.favourite-Space');
+// const contentTitle = document.createTextNode(`${data[i].show.name}`);
