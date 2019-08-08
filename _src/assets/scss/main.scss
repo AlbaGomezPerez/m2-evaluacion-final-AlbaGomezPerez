@@ -6,7 +6,6 @@ body {
 }
 .page{
   height: 100vh;
-  background-color: aqua;
 }
 .title:after{
   content:"\f1e0";
@@ -24,7 +23,6 @@ body {
   width:100%;
   display: inline-block;
   margin: auto;
-  margin-top: 40px;
   }
 
 
@@ -35,8 +33,14 @@ body {
 	float: left;
 }
 
+.favourite-Space-title{
+  background-color: rgb(168, 76, 107);
+  margin-top: 20px;
+}
 .favourite-Space{
   background-color: palevioletred;
+  height: 50%;
+  display: none;
 }
 
 // estilos de elementos creados en JavaScript
