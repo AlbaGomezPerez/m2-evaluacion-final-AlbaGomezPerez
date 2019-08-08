@@ -1,7 +1,22 @@
 @import 'core/settings';
 
 body {
-	background: url('../images/logo-adalab-80px.png') center center no-repeat $color-white;
-	margin: 0;
-	height: 100vh;
+  margin: 0;
+  height: 100vh;
 }
+.page{
+  height: 100vh;
+  background-color: aqua;
+}
+.title{}
+
+.fill{}
+
+.button{}
+
+.space-series{
+  background-color: papayawhip;
+  height: 100%;
+}
+
+
