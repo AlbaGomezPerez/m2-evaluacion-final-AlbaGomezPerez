@@ -20,7 +20,8 @@ function serching(){
     for (let i = 0; i < data.length; i++){
     let serie = '<div class="serie-space">';
     serie += '<ul class="serie" >';
-    serie += '<li class="space-title">' +data[i].show.name+ '</li>';
+    serie += '<li class="space-title noLike">' +data[i].show.name+ '</li>';
+    // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
     if(data[i].show.image === null){
       serie += '<li class="space-image"><img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV"/></li>';
     }else{
@@ -29,17 +30,8 @@ function serching(){
     serie += '</ul>';
     serie += '</div>';
     series.innerHTML += serie;
-
-
-    // IMAGEN POR DEFECTO
-    // Si no tiene imagen medium, ponerle foto por defecto.
-    // if(data[i].show.image === null){
-    //   '<div class="space-image"><img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" /></div>';
-    //   }else{
-    //   '<div class="space-image"><img src="' + data[i].show.image.medium + '"/></div>';
-    //   }
   }
-  for(let myFav of document.querySelectorAll('.space-title')){
+  for(let myFav of document.querySelectorAll('.noLike')){
     myFav.addEventListener('click', favSav);
   }
 });
@@ -54,6 +46,6 @@ inputValue.addEventListener('keyup', event => {
   });
 
 function favSav(event){
-  event.target.classList.add('favourite');
-  event.target.classList.remove('space-title');
+  event.target.classList.add('like');
+  event.target.classList.remove('noLike');
 }
