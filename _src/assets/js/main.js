@@ -13,7 +13,8 @@ function serching(){
   .then (response => response.json())
   .then (data => {
 
-// pintar en el espacio de "series"
+// Bucle para recorrer la info devuelta (data) y
+// pintar en el espacio de "series" las imágenes y títulos
     series.innerHTML='';
     for (let i = 0; i < data.length; i++){
     let serie = '<div class="serie">';
@@ -21,10 +22,25 @@ function serching(){
     serie += '<div class="space-image"><img src="' + data[i].show.image.medium + '"/></div>';
     serie += '</div>';
     series.innerHTML += serie;
-    }
+    console.log(serie);
+
+
+// Si no tiene imagen medium, ponerle foto por defecto.
+    // if(data[i].show.image === null){
+    //   '<div class="space-image"><img src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" /></div>';
+    //   }else{
+    //   '<div class="space-image"><img src="' + data[i].show.image.medium + '"/></div>';
+    //   }
+  }
 });
 }
 
 
 button.addEventListener('click', serching);
+// Al pulsar la tecla 13 (enter) también busca. Esto se ejecuta en la función "serching"
+inputValue.addEventListener('keyup', event => {
+	if (event.keyCode === 13){
+    serching();
+  }
+  });
 
