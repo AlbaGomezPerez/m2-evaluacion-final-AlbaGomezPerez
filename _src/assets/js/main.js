@@ -3,6 +3,7 @@ const inputSerie = document.querySelector('.fill');
 const inputValue = document.querySelector('.value');
 const button = document.querySelector('.button');
 const series = document.querySelector('.space-series');
+const favouriteSpace = document.querySelector('.favourite-Space');
 const url = 'http://api.tvmaze.com/search/shows?q=';
 
 //función hace petición a la api con el valor introducido
@@ -28,18 +29,8 @@ function serching(){
         serieInfo.imageMedium = data[i].show.image.medium;
       }
 
-// codifica el objeto "serieInfo" para guardarlo
-      const serieInfoStr = encodeURIComponent(JSON.stringify(serieInfo));
-
-      let serie = '<div class="serie-space">';
-      serie += '<ul class="serie" >';
-      serie += '<li class="space-title ' + isFavouriteSerie(serieInfoStr) + '" id="' + serieInfoStr + '">' + serieInfo.name + '</li>';
-      // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
-        serie += '<li class="space-image"><img src="' + serieInfo.imageMedium + '"/></li>';
-      serie += '<li class="reference">' + serieInfo.id + '</li>';
-      serie += '</ul>';
-      serie += '</div>';
-      series.innerHTML += serie;
+      // codifica el objeto "serieInfo" para guardarlo
+      series.innerHTML += generateSerieContent(serieInfo);
     }
 
     for(let myFav of document.querySelectorAll('.noLike')){
@@ -65,8 +56,6 @@ inputValue.addEventListener('keyup', event => {
 function favSav(event){
   event.target.classList.add('like');
   event.target.classList.remove('noLike');
-
-console.log(decodeURIComponent(event.target.id));
 
   let favouriteSerieList = localStorage.getItem('favouriteSerieListStored');
   if (favouriteSerieList === null || favouriteSerieList === undefined){
@@ -105,5 +94,27 @@ function handleErrors(response) {
   return response;
 }
 
-const favouriteSpace = document.querySelector('.favourite-Space');
-// const contentTitle = document.createTextNode(`${data[i].show.name}`);
+function showFavourites(){
+  const favouriteSerieList = JSON.parse(localStorage.getItem( 'favouriteSerieListStored'));
+  for (let favouriteSerie of favouriteSerieList){
+    const favouriteSerieInfo = JSON.parse(decodeURIComponent(favouriteSerie));
+    console.log(favouriteSerieInfo);
+    favouriteSpace.innerHTML += generateSerieContent(favouriteSerieInfo);
+  }
+}
+showFavourites();
+
+function generateSerieContent(serieInfo){
+  const serieInfoStr = encodeURIComponent(JSON.stringify(serieInfo));
+  let serie = '<div class="serie-space">';
+  serie += '<ul class="serie" >';
+  serie += '<li class="space-title ' + isFavouriteSerie(serieInfoStr) + '" id="' + serieInfoStr + '">' + serieInfo.name + '</li>';
+  // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
+  serie += '<li class="space-image"><img src="' + serieInfo.imageMedium + '"/></li>';
+  serie += '<li class="reference">' + serieInfo.id + '</li>';
+  serie += '</ul>';
+  serie += '</div>';
+
+  return serie;
+}
+
