@@ -1,7 +1,6 @@
 'use strict';
-const inputSerie = document.querySelector('.fill');
 const inputValue = document.querySelector('.value');
-const button = document.querySelector('.button');
+const searchButton = document.querySelector('.search-button');
 const series = document.querySelector('.space-series');
 const favouriteSpace = document.querySelector('.favourite-Space');
 const reset = document.querySelector('.remove');
@@ -34,9 +33,7 @@ function serching(){
       series.innerHTML += generateSerieContent(serieInfo);
     }
 
-    for(let myFav of document.querySelectorAll('.noLike')){
-      myFav.addEventListener('click', favSav);
-    }
+    updateFavoriteClickEvent();
   })
   .catch(function(error) {
     console.log(error);
@@ -44,7 +41,8 @@ function serching(){
   });
 }
 // Al clickar sobre el botón, busca
-button.addEventListener('click', serching);
+searchButton.addEventListener('click', serching);
+
 // Al pulsar la tecla 13 (enter) también busca. Esto se ejecuta en la función "serching"
 inputValue.addEventListener('keyup', event => {
   if (event.keyCode === 13){
@@ -55,16 +53,37 @@ inputValue.addEventListener('keyup', event => {
 // evento, cuando clickas, cambias de una clase a otra (favoritos). Esta clase es llamada
 // dentro de la función serching
 function favSav(event){
-  event.target.classList.add('like');
-  event.target.classList.remove('noLike');
-
-  let favouriteSerieList = localStorage.getItem('favouriteSerieListStored');
-  if (favouriteSerieList === null || favouriteSerieList === undefined){
-    favouriteSerieList = [event.target.id];
-  }else{
-    favouriteSerieList = JSON.parse(favouriteSerieList);
-    favouriteSerieList.push(event.target.id);
+  let favouriteSerieList = JSON.parse(localStorage.getItem('favouriteSerieListStored'));
+  let listaFavoritosContieneSerie = false;
+  if(favouriteSerieList !== null && favouriteSerieList !== undefined){
+    listaFavoritosContieneSerie = favouriteSerieList.includes(event.target.id);
   }
+
+  if (!listaFavoritosContieneSerie){
+    //logica agregar favorito
+    event.target.classList.add('like');
+    event.target.classList.remove('noLike');
+
+    if (favouriteSerieList === null || favouriteSerieList === undefined){
+      favouriteSerieList = [event.target.id];
+    }else{
+      favouriteSerieList.push(event.target.id);
+    }
+  }else{
+    // logica borrar favorito.
+    const seriesToUnfavorite = document.querySelectorAll("[id='" + event.target.id + "']");
+    for(let serieToUnfavorite of seriesToUnfavorite){
+      serieToUnfavorite.classList.add('noLike');
+      serieToUnfavorite.classList.remove('like');
+    }
+    //
+    if (favouriteSerieList !== null || favouriteSerieList !== undefined){
+      favouriteSerieList = favouriteSerieList.filter(function(value, index, arr){
+        return value !== event.target.id;
+      });
+    }
+  }
+
 
   localStorage.setItem( 'favouriteSerieListStored', JSON.stringify(favouriteSerieList));
   showFavourites();
@@ -102,10 +121,10 @@ function showFavourites(){
   if(favouriteSerieList != undefined && favouriteSerieList != null){
     for (let favouriteSerie of favouriteSerieList){
       const favouriteSerieInfo = JSON.parse(decodeURIComponent(favouriteSerie));
-      console.log(favouriteSerieInfo);
       favouriteSpace.innerHTML += generateSerieContent(favouriteSerieInfo);
     }
   }
+  updateFavoriteClickEvent();
 }
 showFavourites();
 
@@ -122,9 +141,20 @@ function generateSerieContent(serieInfo){
 
   return serie;
 }
+
 function removing(){
   localStorage.clear();
   showFavourites();
 }
+
 reset.addEventListener('click', removing);
 
+function updateFavoriteClickEvent(){
+  for(let serieNoLike of document.querySelectorAll('.noLike')){
+    serieNoLike.addEventListener('click', favSav);
+  }
+
+  for(let myFav of document.querySelectorAll('.like')){
+    myFav.addEventListener('click', favSav);
+  }
+}
