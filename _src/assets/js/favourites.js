@@ -18,3 +18,5 @@ function myFavourite(){
 }
 
 series.addEventListener('click', myFavourite);
+
+const seriesTitle = data[ii].show.name;

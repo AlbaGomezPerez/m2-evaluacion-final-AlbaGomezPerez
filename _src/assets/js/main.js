@@ -16,6 +16,7 @@ function serching(){
 // Bucle para recorrer la info devuelta (data) y
 // pintar en el espacio de "series" las imágenes y títulos
     series.innerHTML='';
+
     for (let i = 0; i < data.length; i++){
     let serie = '<div class="serie-space">';
     serie += '<ul class="serie" >';
@@ -34,9 +35,11 @@ function serching(){
     //   '<div class="space-image"><img src="' + data[i].show.image.medium + '"/></div>';
     //   }
   }
+  for(let myFav of document.querySelectorAll('.space-title')){
+    myFav.addEventListener('click', favSav);
+  }
 });
 }
-
 // Al clickar sobre el botón, busca
 button.addEventListener('click', serching);
 // Al pulsar la tecla 13 (enter) también busca. Esto se ejecuta en la función "serching"
@@ -46,5 +49,7 @@ inputValue.addEventListener('keyup', event => {
   }
   });
 
-
-
+function favSav(event){
+  event.target.classList.add('favourite');
+  event.target.classList.remove('space-title');
+}
