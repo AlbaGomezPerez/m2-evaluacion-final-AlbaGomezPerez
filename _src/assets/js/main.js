@@ -57,7 +57,8 @@ inputValue.addEventListener('keyup', event => {
   }
 });
 
-// evento, cuando clickas:
+// función, evento click:
+// variable
 // -se parsea la info y se guarda en localStorage
 // -cambias de una clase a otra (favoritos).
 // -Dependiendo de la clase, éste se añade o se elimina de favoritos
@@ -116,7 +117,7 @@ function isFavouriteSerie(serieInfo){
 
 
 // función que da una respuesta errónea del servidor. A esta función la
-// llamamos en "serching"
+// llamamos en "serching" (catch)
 function handleErrors(response) {
   if (!response.ok) {
     throw Error(response.statusText);
@@ -163,6 +164,8 @@ function removing(){
 
 reset.addEventListener('click', removing);
 
+// recorre toda la info sobre la parte de favoritos. Es llamada dentro de 2
+// funciones "serching"(petición) y "showFavourites"(sección favoritos)
 function updateFavoriteClickEvent(){
   for(let serieNoLike of document.querySelectorAll('.noLike')){
     serieNoLike.addEventListener('click', favSav);
@@ -173,6 +176,7 @@ function updateFavoriteClickEvent(){
   }
 }
 
+// función colapsables
 function openFavourites(){
   if(favouritesSaved.classList.contains('hidden')){
     favouritesSaved.classList.remove('hidden');
