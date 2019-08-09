@@ -90,7 +90,7 @@ function favSav(event){
     }
   }
 
-// recoger la info del localStorage. Hay que devolverla a su estado natural, a cadena
+  // recoger la info del localStorage. Hay que devolverla a su estado natural, a cadena
   localStorage.setItem( 'favouriteSerieListStored', JSON.stringify(favouriteSerieList));
   showFavourites();
 }
