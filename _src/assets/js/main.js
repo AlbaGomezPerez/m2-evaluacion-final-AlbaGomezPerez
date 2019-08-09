@@ -128,6 +128,7 @@ function showFavourites(){
 }
 showFavourites();
 
+// función generar estructura para el html
 function generateSerieContent(serieInfo){
   const serieInfoStr = encodeURIComponent(JSON.stringify(serieInfo));
   let serie = '<div class="serie-space">';

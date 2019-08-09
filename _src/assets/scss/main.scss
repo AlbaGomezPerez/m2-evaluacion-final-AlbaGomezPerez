@@ -7,10 +7,7 @@ body {
 .page{
   height: 100vh;
 }
-.title:after{
-  content: "\f030";
-  font-family: "Font Awesome 5 Solid";
-  font-weight: 900;
+.title{
 }
 
 .fill{}
@@ -54,7 +51,12 @@ body {
   list-style: none;
 }
 
-.space-title{
+.space-title:before{
+  content: "\f005";
+  font-weight: bold;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 20px;
+  margin-right: 20px;
   color: white;
   width: 300px;
 }
