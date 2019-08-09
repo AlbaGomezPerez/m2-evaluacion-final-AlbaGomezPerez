@@ -33,7 +33,7 @@ body {
 }
 
 .my-favs{
-  height: 100px;
+  height: 100%;
   background-color: palegoldenrod;
 }
 
@@ -46,6 +46,7 @@ body {
 }
 
 .favourite-Space{
+  padding-top: 50px;
 }
 
 
@@ -65,9 +66,25 @@ body {
   font-family: "Font Awesome 5 Pro";
   margin-left: 15px;
 }
-
-
+.remove-container{
+  position: absolute;
+  margin-bottom: 50px;
+}
 .remove{
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 200px;
+
+
+}
+.remove:before{
+  content: "\f5c0";
+  font-weight: bold;
+  font-family: "Font Awesome 5 Pro";
+  font-size: 20px;
+  margin-left: 0px;
+  margin-right: 20px;
 
 }
 
@@ -98,9 +115,9 @@ body {
   padding-top: 10px;
 }
 
-// .reference{
-//   display: none;
-// }
+.reference{
+  display: none;
+}
 
 .like{
   background-color: rgb(190, 27, 62);
