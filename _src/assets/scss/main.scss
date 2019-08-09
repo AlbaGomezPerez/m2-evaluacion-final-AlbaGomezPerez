@@ -38,20 +38,28 @@ body {
   display: flex;
   display: inline-block;
   margin: auto;
-  margin-left: 80px;
-
+  padding-left: 10%;
+  padding-right: 10%;
+  background-color:#C2D9D9;
   }
-
 
 .serie-space{
   width: 300px;
   margin: 20px;
+  margin-left: 80px;
   float: left;
+  background-color: #037F8C;
 }
 
 .my-favs{
-  height: 100%;
-  background-color: palegoldenrod;
+  height: 100vh;
+  background-color: #D4C0BE;
+  width:100%;
+  display: flex;
+  display: inline-block;
+  margin: auto;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .hidden{
@@ -110,13 +118,14 @@ body {
   margin-bottom: 50px;
 }
 .remove{
-  height: 30px;
   margin-top: 20px;
-  margin-left: 20px;
-  width: 200px;
-
-
+  margin-left: 80px;
+  width: 300px;
+  height: 30px;
+  font-size:18px;
+  text-decoration: none;
 }
+
 .remove:before{
   content: "\f5c0";
   font-weight: bold;
@@ -124,7 +133,6 @@ body {
   font-size: 20px;
   margin-left: 0px;
   margin-right: 20px;
-
 }
 
 // estilos de elementos creados en JavaScript
@@ -157,7 +165,7 @@ body {
 .noLike{
   background-color: #04D9D9;
   width: 300px;
-  height: 40px;
+  height: 60px;
   padding-top: 10px;
 }
 
@@ -166,9 +174,9 @@ body {
 }
 
 .like{
-  background-color:#8C353D;
+  background-color:#9c637d;
   width: 300px;
-  height: 40px;
+  height: 60px;
   padding-top: 10px;
 }
 
