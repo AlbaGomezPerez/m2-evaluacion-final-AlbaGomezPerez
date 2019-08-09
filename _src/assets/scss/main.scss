@@ -38,6 +38,7 @@ body {
   display: flex;
   display: inline-block;
   margin: auto;
+  margin-left: 80px;
 
   }
 
@@ -84,6 +85,26 @@ body {
   font-family: "Font Awesome 5 Pro";
   margin-left: 15px;
 }
+
+.Search-Space-title{
+  background-color:#011C40;
+  color: white;
+  opacity:0.8;
+  margin-top: 0px;
+  height: 60px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+.Search-Space-title::after{
+  content: "\f002";
+  font-weight: bold;
+  font-family: "Font Awesome 5 Pro";
+  margin-left: 15px;
+}
+
+
 .remove-container{
   position: absolute;
   margin-bottom: 50px;
