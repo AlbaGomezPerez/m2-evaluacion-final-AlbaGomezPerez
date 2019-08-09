@@ -37,6 +37,8 @@ function serching(){
 
     updateFavoriteClickEvent();
   })
+
+  // mensaje para cuando de un error el servidor.
   .catch(function(error) {
     console.log(error);
     series.innerHTML = 'Vuelve a intentarlo más tarde, se ha producido un error';
@@ -52,8 +54,10 @@ inputValue.addEventListener('keyup', event => {
   }
 });
 
-// evento, cuando clickas, cambias de una clase a otra (favoritos). Esta clase es llamada
-// dentro de la función serching
+// evento, cuando clickas:
+// -se parsea la info y se guarda en localStorage
+// -cambias de una clase a otra (favoritos).
+// -Dependiendo de la clase, éste se añade o se elimina de favoritos
 function favSav(event){
   let favouriteSerieList = JSON.parse(localStorage.getItem('favouriteSerieListStored'));
   let listaFavoritosContieneSerie = false;
@@ -62,7 +66,7 @@ function favSav(event){
   }
 
   if (!listaFavoritosContieneSerie){
-    //logica agregar favorito
+    //agregar favorito
     event.target.classList.add('like');
     event.target.classList.remove('noLike');
 
@@ -72,7 +76,7 @@ function favSav(event){
       favouriteSerieList.push(event.target.id);
     }
   }else{
-    // logica borrar favorito.
+    // borrar favorito.
     const seriesToUnfavorite = document.querySelectorAll("[id='" + event.target.id + "']");
     for(let serieToUnfavorite of seriesToUnfavorite){
       serieToUnfavorite.classList.add('noLike');
@@ -86,7 +90,7 @@ function favSav(event){
     }
   }
 
-
+// recoger la info del localStorage. Hay que devolverla a su estado natural, a cadena
   localStorage.setItem( 'favouriteSerieListStored', JSON.stringify(favouriteSerieList));
   showFavourites();
 }
@@ -116,7 +120,11 @@ function handleErrors(response) {
   }
   return response;
 }
-
+// pintar los favoritos. Esta función es llamada en
+//  "removing" y cuando guardamos por primera vez en local
+// (cuando borremos). Hay que descodificarlos, antes los
+// habíamos codificado. En la parte de favouriteSpace metemos
+// generateSerieContent que es donde aparecen las series buscadas.
 function showFavourites(){
   favouriteSpace.innerHTML = '';
   const favouriteSerieList = JSON.parse(localStorage.getItem( 'favouriteSerieListStored'));
