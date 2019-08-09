@@ -165,6 +165,8 @@ function updateFavoriteClickEvent(){
 function openFavourites(){
   if(favouritesSaved.classList.contains('hidden')){
     favouritesSaved.classList.remove('hidden');
+  }else{
+    favouritesSaved.classList.add('hidden');
   }
 }
 
