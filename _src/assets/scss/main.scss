@@ -5,7 +5,8 @@ body {
   height: 100vh;
 }
 .page{
-  height: 100vh;
+  height: 100%;
+  background-image:url("/assets/images/palomitas.jpg")
 }
 .title{
 }
@@ -15,29 +16,52 @@ body {
 .button{}
 
 .space-series{
-  background-color: papayawhip;
+  // background-color: papayawhip;
   height: 100%;
   width:100%;
+  display: flex;
   display: inline-block;
   margin: auto;
+  // background-image:url("/assets/images/cielo.jpg")
   }
 
 
 .serie-space{
-  background-color: orange;
   width: 360px;
   margin: 20px;
-	float: left;
+  float: left;
 }
+
+.my-favs{
+  height: 100px;
+  background-color: palegoldenrod;
+}
+
+.hidden{
+  display: none;
+}
+
+.favourite-Space{
+}
+
 
 .favourite-Space-title{
   background-color: rgb(168, 76, 107);
   margin-top: 20px;
+  height: 60px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
 }
-.my-favourite{
-  background-color: palevioletred;
-  height: 50%;
+
+.favourite-Space-title::after{
+  content: "\f078";
+  font-weight: bold;
+  font-family: "Font Awesome 5 Pro";
+  margin-left: 15px;
 }
+
 
 .remove{
 
@@ -45,35 +69,48 @@ body {
 
 // estilos de elementos creados en JavaScript
 .serie{
-  background-color: pink;
   width: 300px;
   margin-top: 20px;
   list-style: none;
+  padding: 0px;
+  font-size: 20px;
 }
 
 .space-title:before{
   content: "\f005";
   font-weight: bold;
   font-family: "Font Awesome 5 Pro";
-  font-size: 20px;
+  font-size: 30px;
   margin-right: 20px;
   color: white;
   width: 300px;
+  padding-left: 10px;
 }
 
 .noLike{
   background-color: palegreen;
+  width: 300px;
+  height: 40px;
+  padding-top: 10px;
 }
 
-.reference{
-  display: none;
-}
+// .reference{
+//   display: none;
+// }
 
 .like{
   background-color: rgb(190, 27, 62);
+  width: 300px;
+  height: 40px;
+  padding-top: 10px;
 }
 
 .space-image{
+}
+
+img{
+  display: flex;
+  margin: auto;
 
 }
 

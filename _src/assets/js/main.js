@@ -4,6 +4,8 @@ const searchButton = document.querySelector('.search-button');
 const series = document.querySelector('.space-series');
 const favouriteSpace = document.querySelector('.favourite-Space');
 const reset = document.querySelector('.remove');
+const collapsable = document.querySelector('.favourite-Space-title');
+const favouritesSaved = document.querySelector('.my-favs');
 const url = 'http://api.tvmaze.com/search/shows?q=';
 
 //función hace petición a la api con el valor introducido
@@ -159,3 +161,12 @@ function updateFavoriteClickEvent(){
     myFav.addEventListener('click', favSav);
   }
 }
+
+function openFavourites(){
+  if(favouritesSaved.classList.contains('hidden')){
+    favouritesSaved.classList.remove('hidden');
+  }
+}
+
+
+collapsable.addEventListener('click', openFavourites);
