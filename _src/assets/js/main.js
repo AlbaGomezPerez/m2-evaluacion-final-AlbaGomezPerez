@@ -1,4 +1,5 @@
 'use strict';
+// llamada a todas las constantes
 const inputValue = document.querySelector('.value');
 const searchButton = document.querySelector('.search-button');
 const series = document.querySelector('.space-series');
@@ -15,12 +16,12 @@ function serching(){
   .then(handleErrors)
   .then (response => response.json())
   .then (data => {
-    // Bucle para recorrer la info devuelta (data) y
-    // pintar en el espacio de "series" las imágenes y títulos
+// pintar en el espacio de "series" las imágenes y títulos
     series.innerHTML='';
-
+// Bucle para recorrer la info devuelta (data). Empiezo en el elemento 0,
+// y añado cada vez uno.
     for (let i = 0; i < data.length; i++){
-
+  // variable que hace referencia al id, el name y la imagen.
       let serieInfo = {
         id: data[i].show.id,
         name: data[i].show.name,
@@ -31,10 +32,12 @@ function serching(){
         serieInfo.imageMedium = data[i].show.image.medium;
       }
 
-      // codifica el objeto "serieInfo" para guardarlo
+      // Dentro de series (antes estaba vacio) meto la variable, codificada
+      // más adelante necesito esa info codificada.
       series.innerHTML += generateSerieContent(serieInfo);
     }
 
+    // función ejecutada más adelante. Actulizar info favoritos.
     updateFavoriteClickEvent();
   })
 
