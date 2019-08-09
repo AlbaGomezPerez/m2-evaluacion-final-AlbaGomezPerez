@@ -124,6 +124,8 @@ body{
   height: 30px;
   font-size:18px;
   text-decoration: none;
+  background-color: rgb(19, 46, 82);
+  color: white;
 }
 
 .remove:before{
@@ -133,6 +135,7 @@ body{
   font-size: 20px;
   margin-left: 0px;
   margin-right: 20px;
+  color: rgb(102, 42, 62);
 }
 
 // estilos de elementos creados en JavaScript
