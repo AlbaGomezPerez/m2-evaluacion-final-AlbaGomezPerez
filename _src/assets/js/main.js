@@ -7,7 +7,6 @@ const favouriteSpace = document.querySelector('.favourite-Space');
 const reset = document.querySelector('.remove');
 const collapsable = document.querySelector('.favourite-Space-title');
 const favouritesSaved = document.querySelector('.my-favs');
-const button2 = document.querySelector('.new-button');
 const url = 'http://api.tvmaze.com/search/shows?q=';
 
 //función hace petición a la api con el valor introducido
@@ -179,11 +178,6 @@ function updateFavoriteClickEvent(){
   }
 }
 
-function newTask(){
-  for (const fav of document.querySelectorAll('.like')){
-    console.log(fav.innerHTML);
-  }
-}
 // función colapsables
 function openFavourites(){
   if(favouritesSaved.classList.contains('hidden')){
@@ -195,6 +189,5 @@ function openFavourites(){
 
 
 collapsable.addEventListener('click', openFavourites);
-button2.addEventListener('click', newTask);
 
 

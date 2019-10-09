@@ -6,7 +6,7 @@ body{
 .page{
   background-image:url("/assets/images/cielo.jpg");
   background-size: cover;
-  height: 300px;
+  height: 400px;
 }
 
 .title{
@@ -25,6 +25,10 @@ body{
   margin-left: 80px;
   height: 40px;
   font-size:30px;
+  background-color: #011C40;
+  color: grey;
+  font-size: 20px;
+  padding-left: 15px;
 }
 
 .search-button{
@@ -79,7 +83,7 @@ body{
   background-color: rgb(102, 42, 62);
   color: white;
   opacity:0.8;
-  margin-top: 20px;
+  margin-top: 120px;
   height: 60px;
   font-size: 30px;
   display: flex;
