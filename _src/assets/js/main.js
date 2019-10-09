@@ -196,3 +196,5 @@ function openFavourites(){
 
 collapsable.addEventListener('click', openFavourites);
 button2.addEventListener('click', newTask);
+
+
