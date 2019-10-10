@@ -17,6 +17,7 @@ body{
   display: flex;
   margin: auto;
   margin-top: 0px;
+  margin-bottom: 5%;
   padding-top: 20px;
   padding-left: 80px;
 }
@@ -32,6 +33,13 @@ body{
 }
 
 .search-button{
+  margin-left: 30px;
+  height: 30px;
+  font-size:18px;
+  text-decoration: none;
+}
+
+.search-button2{
   margin-left: 30px;
   height: 30px;
   font-size:18px;
@@ -83,7 +91,7 @@ body{
   background-color: rgb(102, 42, 62);
   color: white;
   opacity:0.8;
-  margin-top: 120px;
+  margin-top: 67px;
   height: 60px;
   font-size: 30px;
   display: flex;

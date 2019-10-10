@@ -2,6 +2,8 @@
 // llamada a todas las constantes
 const inputValue = document.querySelector('.value');
 const searchButton = document.querySelector('.search-button');
+const inputGenre = document.querySelector('.genre');
+const searchButton2 = document.querySelector('.search-button2');
 const series = document.querySelector('.space-series');
 const favouriteSpace = document.querySelector('.favourite-Space');
 const reset = document.querySelector('.remove');
@@ -12,7 +14,7 @@ const url = 'http://api.tvmaze.com/search/shows?q=';
 //función hace petición a la api con el valor introducido
 // por el usuario
 function serching(){
-  fetch(url + inputValue.value)
+  fetch(url + (inputValue.value || inputGenre.value))
   .then(handleErrors)
   .then (response => response.json())
   .then (data => {
@@ -25,7 +27,6 @@ function serching(){
       let serieInfo = {
         id: data[i].show.id,
         name: data[i].show.name,
-        status: data[i].show.status,
       };
       if(data[i].show.image === null){
         serieInfo.imageMedium = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
@@ -50,6 +51,7 @@ function serching(){
 }
 // Al clickar sobre el botón, busca
 searchButton.addEventListener('click', serching);
+searchButton2.addEventListener('click', serching);
 
 // Al pulsar la tecla 13 (enter) también busca. Esto se ejecuta en la función "serching"
 inputValue.addEventListener('keyup', event => {
@@ -152,7 +154,6 @@ function generateSerieContent(serieInfo){
   // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
   serie += '<li class="space-image"><img src="' + serieInfo.imageMedium + '"/></li>';
   serie += '<li class="reference">' + serieInfo.id + '</li>';
-  serie += '<li class="newInfo">' + serieInfo.status + '</li>';
   serie += '</ul>';
   serie += '</div>';
 
