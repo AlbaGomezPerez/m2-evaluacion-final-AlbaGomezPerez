@@ -61,7 +61,8 @@ body{
   margin: 20px;
   margin-left: 80px;
   float: left;
-  background-color: #037F8C;
+  background-color: rgb(2, 84, 94);
+  border-radius: 3%;
 }
 
 .my-favs{
@@ -102,6 +103,23 @@ body{
 .favourite-Space-title::after{
   content: "\f078";
   font-weight: bold;
+  font-family: "Font Awesome 5 Pro";
+  margin-left: 15px;
+}
+
+.info{
+  margin-top: 10px;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.link::after{
+  content: "\f05a";
+  font-weight: bold;
+  color: white;
+  font-size: 30px;
   font-family: "Font Awesome 5 Pro";
   margin-left: 15px;
 }
@@ -179,7 +197,7 @@ body{
 }
 
 .noLike{
-  background-color: #04D9D9;
+  background-color: rgb(2, 158, 158);
   width: 300px;
   height: 60px;
   padding-top: 10px;
