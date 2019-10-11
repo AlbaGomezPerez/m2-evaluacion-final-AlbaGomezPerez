@@ -40,6 +40,7 @@ function serching(){
       series.innerHTML += generateSerieContent(serieInfo);
     }
 
+
     // función ejecutada más adelante. Actulizar info favoritos.
     updateFavoriteClickEvent();
   })
@@ -155,12 +156,13 @@ function generateSerieContent(serieInfo){
   // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
   serie += '<li class="space-image"><img src="' + serieInfo.imageMedium + '"/></li>';
   serie += '<li class="reference">' + serieInfo.id + '</li>';
-  // serie += '<li class="info"> <a class="link" href= "_src/templates/partials/_info.html" ></a> </li>';
+  serie += '<li class="info"> <a class="link" href= "info.html" ></a> </li>';
   serie += '</ul>';
   serie += '</div>';
-
+  console.log (serieInfo.id);
   return serie;
 }
+
 
 function removing(){
   localStorage.clear();
