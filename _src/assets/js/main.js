@@ -4,7 +4,6 @@ const inputValue = document.querySelector('.value');
 const searchButton = document.querySelector('.search-button');
 const inputGenre = document.querySelector('.genre');
 const searchButton2 = document.querySelector('.search-button2');
-// const moreInfo = document.querySelector('.info');
 const series = document.querySelector('.space-series');
 const favouriteSpace = document.querySelector('.favourite-Space');
 const reset = document.querySelector('.remove');
@@ -156,10 +155,11 @@ function generateSerieContent(serieInfo){
   // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
   serie += '<li class="space-image"><img src="' + serieInfo.imageMedium + '"/></li>';
   serie += '<li class="reference">' + serieInfo.id + '</li>';
-  serie += '<li class="info"> <a class="link" href= "info.html" ></a> </li>';
+  serie += '<li class="info"> <a class="link" href= "info.html?id=' + (serieInfo.id) + '"></a></li>';
   serie += '</ul>';
   serie += '</div>';
   console.log (serieInfo.id);
+  console.log('El id de la serie es ' + (serieInfo.id) + ' y lo voy a usar');
   return serie;
 }
 
@@ -194,6 +194,7 @@ function openFavourites(){
 
 collapsable.addEventListener('click', openFavourites);
 
-// función mostrar info detallada
+
+
 
 
