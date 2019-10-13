@@ -1,13 +1,11 @@
 'use strict';
 
-let infoUrl = new URL(window.location.search);
+let infoUrl = new URL(window.location.href);
 let id = infoUrl.searchParams.get('id');
-console.log('soy el ' +(id)+'y funciono');
+console.log(id);
 
 
-// api de id
-
-// meter variable id de serie
+// api de id http://api.tvmaze.com/shows/
 
 // fetch que me devuelva:
 // -titulo. imagen. summary
