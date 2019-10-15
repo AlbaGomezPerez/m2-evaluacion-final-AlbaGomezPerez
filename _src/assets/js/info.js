@@ -4,17 +4,21 @@ let infoUrl = new URL(window.location.href);
 let id = infoUrl.searchParams.get('id');
 console.log(id);
 
+/*const page = document.querySelector('.page');*/
+const refresh = document.querySelector('.body');
 const series = document.querySelector('.space-series');
+const button = document.querySelector('.here');
 const urlId = 'http://api.tvmaze.com/shows/';
 
-
+window.onload = function() {
+  function showDetailSerie(){
   fetch(urlId + id)
     .then(response => response.json())
     .then(data => {
-// pintar en el espacio de "series" las imágenes y títulos
-      series.innerHTML = '';
-// Bucle para recorrer la info devuelta (data). Empiezo en el elemento 0,
-// y añado cada vez uno.
+        // pintar en el espacio de "series" las imágenes y títulos
+        series.innerHTML = '';
+        // Bucle para recorrer la info devuelta (data). Empiezo en el elemento 0,
+        // y añado cada vez uno.
         // variable que hace referencia al id, el name y la imagen.
         let serieDetail = {
           id: data.show.id,
@@ -28,11 +32,12 @@ const urlId = 'http://api.tvmaze.com/shows/';
         }
         series.innerHTML += generateSerieContentDetail(serieDetail);
       }
-    );
+      );}
+};
 
 function generateSerieContentDetail(serieDetail) {
   let serieMoreInfo = '<div class="serie-space">';
-  serieMoreInfo += '<ul class="serie" >';
+  serieMoreInfo += '<ul class="serie">';
   serieMoreInfo += '<li class="space-title ' + serieDetail.name + '</li>';
   // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
   serieMoreInfo += '<li class="space-image"><img src="' + serieDetail.imageMedium + '"/></li>';
@@ -43,3 +48,9 @@ function generateSerieContentDetail(serieDetail) {
   console.log('El id de la serie es ' + (serieDetail.id) + ' y lo voy a usar');
   return serieMoreInfo;
 }
+
+/*page.addEventListener('click',location.reload);*/
+refresh.addEventListener('onload', showDetailSerie);
+
+
+
