@@ -8,14 +8,46 @@ body{
   background-size: cover;
   height: 100vh;
 }
-.button-container{
-  padding-top: 100px;
+
+.return{
+  margin-left: 1308px;
+  height: 30px;
+  width: 100px;
+  font-size: 20px;
+  background-color: white;
 }
 
-.here{
-  width: 200px;
+.serie-space{
+  padding-top: 15%;
+}
+
+.space-title{
+  background-color: #011C40;
+  width: 40%;
+  height: 60px;
+  margin-left: 177px;
   display: flex;
   justify-content: center;
-  margin: auto;
-  height: 50px;
+  align-items: center;
+  color: #9c637d;
+  font-size: 30px;
+}
+
+.serie{
+  padding-right: 40px;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.space-summary{
+  background-color: #011C40;
+  height: 295px;
+  width: 60%;
+  color: #8fa8cc;
+  font-size: 22px;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-left: 0px;
+  align-items: center;
 }

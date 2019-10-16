@@ -161,8 +161,6 @@ function generateSerieContent(serieInfo) {
   serie += '<li class="info"> <a class="link" href= "info.html?id=' + (serieInfo.id) + '"></a></li>';
   serie += '</ul>';
   serie += '</div>';
-  console.log(serieInfo.id);
-  console.log('El id de la serie es ' + (serieInfo.id) + ' y lo voy a usar');
   return serie;
 }
 

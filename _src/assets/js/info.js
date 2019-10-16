@@ -35,12 +35,13 @@ window.onload = function() {
 
 function generateSerieContentDetail(serieDetail) {
   let serieMoreInfo = '<div class="serie-space">';
+  serieMoreInfo += '<div class="space-title">' + serieDetail.name + '</div>';
   serieMoreInfo += '<ul class="serie">';
-  serieMoreInfo += '<li class="space-title">' + serieDetail.name + '</li>';
   // añadir etiqueta imagen (poner foto por defecto si no tiene la serie)
   serieMoreInfo += '<li class="space-image"><img src="' + serieDetail.imageMedium + '"/></li>';
-  serieMoreInfo += '<li class="space-summary">' + serieDetail.summary + '</li>';
+  serieMoreInfo += '<li class="space-summary"><div>' + serieDetail.summary + '</div></li>';
   serieMoreInfo += '</ul>';
+  serieMoreInfo += '<button class="return"><a class="link" href= "index.html' + '"></a></button>';
   serieMoreInfo += '</div>';
   return serieMoreInfo;
 }
